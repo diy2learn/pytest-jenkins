@@ -19,3 +19,11 @@ RUN add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
+
+RUN apt-get install docker-ce=5:19.03.7~3-0~ubuntu-xenial \
+    docker-ce-cli=5:19.03.7~3-0~ubuntu-xenial \
+    containerd.io
+
+RUN docker version
+
+RUN docker run hello-world
