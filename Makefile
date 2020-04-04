@@ -11,4 +11,4 @@ docker-build-xenial:
 	docker build -t xenial-docker-image -f XenialDockerfile .
 
 jenkins-run:
-	docker run -d -p 8080:8080 --name jenkins-docker-container -v /var/run/docker.sock:/var/run/docker.sock jenkins-docker
+	docker run -d -p 8080:8080 --name jenkins-docker-container -v /var/run/docker.sock:/var/run/docker.sock jenkins-docker-image
