@@ -3,8 +3,7 @@ FROM jenkins/jenkins:lts
 USER root
 
 RUN apt-get update
-
-RUN apt-get install -y \
+&& apt-get install -y \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -18,12 +17,7 @@ RUN add-apt-repository \
    xenial \
    stable"
 
-RUN apt-get update
-
-# RUN apt-get install -y libltdl7 libseccomp2
-
-# RUN curl -O https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/containerd.io_1.2.6-3_amd64.deb
-
-# RUN apt-get install -y ./containerd.io_1.2.6-3_amd64.deb
-
-RUN apt-get install -y containerd.io=1.2.6-3 docker-ce=5:19.03.7~3-0~ubuntu-xenial
+RUN buildDeps='containerd.io=1.2.6-3 docker-ce=5:19.03.7~3-0~ubuntu-xenial'
+&& apt-get update
+&& apt-get install -y $buildDeps --no-install-recommends
+&& apt-get purge -y --auto-remove $buildDeps
