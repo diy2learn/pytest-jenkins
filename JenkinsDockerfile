@@ -4,8 +4,7 @@ USER root
 
 RUN buildDeps='apt-transport-https ca-certificates curl gnupg-agent software-properties-common' \
 && apt-get update \
-&& apt-get install -y $buildDeps --no-install-recommends \
-&& apt-get purge -y --auto-remove $buildDeps
+&& apt-get install -y $buildDeps --no-install-recommends
 
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 
@@ -16,5 +15,4 @@ RUN add-apt-repository \
 
 RUN buildDeps='containerd.io=1.2.6-3 docker-ce=5:19.03.7~3-0~ubuntu-xenial' \
 && apt-get update \
-&& apt-get install -y $buildDeps --no-install-recommends \
-&& apt-get purge -y --auto-remove $buildDeps
+&& apt-get install -y $buildDeps --no-install-recommends
