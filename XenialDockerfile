@@ -22,9 +22,7 @@ RUN add-apt-repository \
 
 RUN apt-get update
 
-RUN apt-get install -y containerd.io
-
-RUN apt-get install -y 'docker-ce=19.03.7~3-0~ubuntu-xenial'
+RUN apt-get install -y docker-ce=17.12.1~ce-0~ubuntu
 
 RUN docker version
 
