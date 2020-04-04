@@ -13,8 +13,6 @@ RUN apt-get install -y \
 
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 
-RUN apt-key fingerprint 0EBFCD88
-
 RUN add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    xenial \
@@ -22,10 +20,10 @@ RUN add-apt-repository \
 
 RUN apt-get update
 
-RUN apt-get install -y libltdl7 libseccomp2
+# RUN apt-get install -y libltdl7 libseccomp2
 
-RUN curl -O https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/containerd.io_1.2.6-3_amd64.deb
+# RUN curl -O https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/containerd.io_1.2.6-3_amd64.deb
 
-RUN apt-get install -y ./containerd.io_1.2.6-3_amd64.deb
+# RUN apt-get install -y ./containerd.io_1.2.6-3_amd64.deb
 
-RUN apt-get install -y docker-ce=5:19.03.7~3-0~ubuntu-xenial
+RUN apt-get install -y containerd.io=1.2.6-3_amd64.deb docker-ce=5:19.03.7~3-0~ubuntu-xenial
