@@ -11,6 +11,7 @@ RUN add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    xenial \
    stable"
+RUN apt-get install docker.io
 
 RUN apt-get update  -qq \
-    && apt-get install -y docker-ce=5:19.03.7~3-0~ubuntu-xenial containerd.io
+    && apt-get install -y docker-ce=5:19.03.7~3-0~ubuntu-xenial
