@@ -12,5 +12,12 @@ pipeline {
       }
     }
 
+    stage('test') {
+      steps {
+        sh '''pytest
+'''
+      }
+    }
+
   }
 }
