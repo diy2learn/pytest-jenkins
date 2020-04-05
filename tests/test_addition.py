@@ -3,8 +3,8 @@ import pytest
 
 
 def test_add():
-    result = add(3, 4)
-    assert result == 7
+    result = add(3, 5)
+    assert result == 8
 
 
 def test_add_string():
