@@ -5,4 +5,3 @@
 import setuptools
 
 setuptools.setup()
-
