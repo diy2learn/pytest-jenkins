@@ -100,7 +100,8 @@ refs:
     
     I left the settings as "application/json" and "send me everything" and "active"
     
-    The Webhooks area has a handy 'Recent Deliveries' section which can show you if your webhooks are making it to Jenkins. At first, I had the wrong URL so mine has red Xs next to them. Now, they're all green checkmarks.
+    The Webhooks area has a handy 'Recent Deliveries' section which can show you if your webhooks are making it to Jenkins. 
+    At first, I had the wrong URL so mine has red Xs next to them. Now, they're all green checkmarks.
     
     Github Access Token
     
