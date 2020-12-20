@@ -16,3 +16,6 @@ jenkins-run:
 #-------Jenkins CICD ---------------#
 install-style-doc-deps:
 	python -m pip install .[lint,doc]
+
+lint:
+	flake8 .

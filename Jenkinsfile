@@ -17,9 +17,9 @@ pipeline {
       }
     }
 
-    stage('test') {
+    stage('Code Style') {
       steps {
-        sh 'pytest'
+        sh 'make lint'
       }
     }
 
