@@ -83,6 +83,85 @@ docker run -d -p 8080:8080 --name jenkins-docker-container -v /var/run/docker.so
     ```
     * Copy the output password, e.g: `9e93c34933fa438ea8e9101315422fa1`
 
+Simple github-jenkins
+---------------------
+This will run new test for *every* commit. Generally, it is better to trigger build/test only on pull requests.
+
+refs:  
+    * https://stackoverflow.com/questions/55264157/using-a-jenkins-pipeline-to-build-github-pull-requests
+    * nice tutorial to run pytest *without* pipeline (using shell script in `build` step): https://medium.com/swlh/build-your-first-automated-test-integration-with-pytest-jenkins-and-docker-ec738ec43955
+    
+* *Github*:   
+    First off, set up webhooks for your system. This is a good guide for [Github Webhooks] (https://dzone.com/articles/adding-a-github-webhook-in-your-jenkins-pipeline).
+     Go to your Github repository and click on the Settings tab. Then select 'Webhooks' in the left menu:
+    
+    The URL of my Jenkins setup is `https://jenkins.my_domain.com`. So, in the 'Payload URL' box,
+     I put `https://jenkins.my_domain.com/github-webhook/`
+    
+    I left the settings as "application/json" and "send me everything" and "active"
+    
+    The Webhooks area has a handy 'Recent Deliveries' section which can show you if your webhooks are making it to Jenkins. At first, I had the wrong URL so mine has red Xs next to them. Now, they're all green checkmarks.
+    
+    Github Access Token
+    
+    Many guides suggest that you provide Jenkins with a personal access token to communicate with your repo.
+    To do that, go to your account avatar in the top right and select:
+     `Settings -> Developer Settings -> Personal access tokens->Generate Token`
+    
+    Put whatever you want for the description. Under 'select scopes', if you just want it to work,
+    select every checkbox in the list.
+    
+    I selected:
+    
+        repo:status
+        write:repo_hook
+        read:repo_hook
+        admin:org_hook
+    Click save and you'll be shown your secret key. Copy this somewhere safe (we'll use it soon).
+
+* *Plugins*  
+    * Jenkins ver. 2.222.1
+    * Github Integratino Pluging 0.2.8
+
+* *Configuring jenkins*  
+    * Now for the hard part. Try and install all of the plugins I've listed above.
+    
+    * Go to `Jenkins-Manage Jenkins->Configure System`
+    
+        * Add Github server:
+        Locate the `Github` section and click `Add Github Server`
+        
+            Name: Github
+            Api URL: https://api.github.com
+            Manage Hooks: true
+            Under credentials, click "Add." You'll be brought to a menu. Select "Secret Text"
+            
+            Scope: Global
+            Secret: paste your access token from earlier
+            ID: (I left this blank)
+            Description: DorianGithubCreds
+            
+        Hit `save`. Then, select `DorianGithubCreds` from the credentials list.
+        
+        To test, hit "Test Connection." Mine returns 'Credentials verified for user dnrahamim', rate limit: 4998
+        
+        * Build Triggers: 
+        Check `GitHub hook trigger for GITScm polling`
+
+Blueocean Pipeline
+------------------
+ref: 
+    * official tutorial with blue-ocean image: https://jenkins.io/doc/tutorials/create-a-pipeline-in-blue-ocean/
+    * tutorial for run jenkins for simple test python project:
+        *  https://medium.com/@Joachim8675309/jenkins-ci-pipeline-with-python-8bf1a0234ec3
+        
+
+* Install plugin: `blueocean`, this will install all other dependencies (e.g blueocean github pipline)
+* Click on blueocean to create a new pipeline
+    * Currently, only be able to create pipeline with `Git` option
+    * `Github` option was blocked at `connect` step, just after providing PAT token.
+    
+ 
 
 References
 ----------
