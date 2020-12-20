@@ -1,4 +1,4 @@
-from src.calculator import add
+from src.pyjenk.calculator import add
 import pytest
 
 
