@@ -15,4 +15,3 @@ __copyright__ = "Copyright 2020 An Truong"
 __version__ = "0.0.1"
 
 __name__ = "pyjenk"
-
