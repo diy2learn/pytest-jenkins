@@ -1,5 +1,6 @@
-from src.pyjenk.calculator import add
 import pytest
+
+from pyjenk.calculator import add
 
 
 def test_add():
