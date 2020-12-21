@@ -12,18 +12,15 @@ pipeline {
         }
     }
     stage('Code Style') {
-      steps {
-        sh 'make lint'
+          steps {
+            sh 'make lint'
+          }
       }
 
     stage('Test') {
-      steps {
-        sh 'make test'
-      }
+          steps {
+            sh 'make test'
+          }
     }
-
-
-    }
-
   }
 }
