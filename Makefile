@@ -21,7 +21,8 @@ lint:
 	flake8 .
 
 test:
-	tox
+	pytest
+	# tox
 
 clean:
 	find . -name '*.pyc' -exec rm -f {} +
