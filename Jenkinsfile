@@ -11,16 +11,18 @@ pipeline {
             sh 'make install-style-doc-deps'
         }
     }
+    stage('Code Style') {
+      steps {
+        sh 'make lint'
+      }
+
     stage('build') {
       steps {
         sh 'pip install --no-cache-dir -r requirements.txt'
       }
     }
 
-    stage('Code Style') {
-      steps {
-        sh 'make lint'
-      }
+
     }
 
   }
