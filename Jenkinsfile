@@ -16,9 +16,9 @@ pipeline {
         sh 'make lint'
       }
 
-    stage('build') {
+    stage('Test') {
       steps {
-        sh 'pip install --no-cache-dir -r requirements.txt'
+        sh 'make test'
       }
     }
 

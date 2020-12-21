@@ -19,3 +19,6 @@ install-style-doc-deps:
 
 lint:
 	flake8 .
+
+test:
+	tox
