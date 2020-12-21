@@ -21,7 +21,7 @@ lint:
 	flake8 .
 
 test:
-	pytest
+	python setup.py test
 	# tox
 
 clean:
