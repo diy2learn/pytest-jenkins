@@ -5,6 +5,11 @@ pipeline {
     }
 
   }
+  environment {
+    // env variables for tox
+    PYENV_ROOT = "${env.HOME}/.pyenv"
+    PATH = "${env.PYENV_ROOT}/bin:${env.PATH}"
+  }
   stages {
     stage('Install Style-Doc-Deps') {
         steps {
