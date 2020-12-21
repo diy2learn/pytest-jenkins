@@ -1,22 +1,31 @@
 pipeline {
   agent {
     docker {
-      image 'python:3.6-slim'
+      image 'atrng/py_agent:0.0.1'
     }
 
   }
+  environment {
+    // env variables for tox
+    PYENV_ROOT = "${env.HOME}/.pyenv"
+    PATH = "${env.PYENV_ROOT}/bin:${env.PATH}"
+  }
   stages {
-    stage('build') {
-      steps {
-        sh 'pip install --no-cache-dir -r requirements.txt'
-      }
+    stage('Install Style-Doc-Deps') {
+        steps {
+            sh 'make install-style-doc-deps'
+        }
     }
-
-    stage('test') {
-      steps {
-        sh 'pytest'
+    stage('Code Style') {
+          steps {
+            sh 'make lint'
+          }
       }
-    }
 
+    stage('Test') {
+          steps {
+            sh 'make test'
+          }
+    }
   }
 }

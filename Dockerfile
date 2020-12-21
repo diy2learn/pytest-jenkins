@@ -1,4 +1,4 @@
-FROM python:3.6-slim
+FROM atrng/py_agent:0.0.1
 
 MAINTAINER ruoitrauan@yahoo.com
 
