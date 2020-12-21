@@ -28,7 +28,7 @@ omit = ["env/*", "tests/*", ".eggs/*"]
 [tool.tox]
 legacy_tox_ini = """
 [tox]
-envlist = python3.6
+envlist = python3.7
 
 [testenv]
 deps = .[test]

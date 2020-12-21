@@ -22,3 +22,11 @@ lint:
 
 test:
 	tox
+
+clean:
+	find . -name '*.pyc' -exec rm -f {} +
+	find . -name '*.pyo' -exec rm -f {} +
+	rm -rf build/
+	rm -rf dist/
+	rm -rf *.egg-info
+	find . -name __pycache__ -delete
